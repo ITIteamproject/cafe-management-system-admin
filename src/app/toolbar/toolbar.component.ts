@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../login/auth.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,23 +9,10 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./toolbar.component.css'],
 })
 export class ToolbarComponent {
-  selectedTabIndex = 2;
-  OnSubmit(f: NgForm) {
-    console.log(f.value);
-    const reg = f.value;
-
-    // this.serve
-    //   .register(
-    //     reg.username,
-    //     reg.email,
-    //     reg.password,
-    //     reg.repassword,
-    //     reg.gender
-    //   )
-    //   .subscribe({
-    //     next: (res) => {
-    //       this.router.navigateByUrl('/home');
-    //     },
-    //   });
+  constructor(private auth: AuthService , private router:Router){}
+  logout() {
+    this.auth.Logout();
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login');
   }
 }

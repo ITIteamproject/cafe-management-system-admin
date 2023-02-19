@@ -66,7 +66,7 @@
                         </a>
                     </li>
 
-                    <li>
+                    <li (click)="logout()">
                         <a href="#">
                             <span class="icon">
                                 <mat-icon>logout</mat-icon>
@@ -158,124 +158,7 @@
                     <mat-icon> sort</mat-icon>
                     <span style="font-weight: bolder; font-size: large;"> Products </span>
                 </ng-template>
-               <app-products></app-products>
-            </mat-tab>
-            <mat-tab label="Add User">
-                <ng-template mat-tab-label>
-                    <mat-icon> add</mat-icon>
-                    <span style="font-weight: bolder; font-size: large;"> Add User </span>
-                </ng-template>
-                <form class="form" #f="ngForm" (submit)="OnSubmit(f)">
-                    <mat-form-field>
-                        <mat-label>Username</mat-label>
-
-                        <input matInput placeholder="User Name" required name="username" ngModel #username="ngModel">
-                        <mat-icon matSuffix>perm_identity</mat-icon>
-                        <mat-error *ngIf="username.invalid">
-                            Username is required
-                        </mat-error>
-
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Email</mat-label>
-                        <input matInput placeholder="Email" email required name="email" ngModel #email="ngModel">
-                        <mat-error *ngIf="email.hasError('required') && !email.dirty">Email is required</mat-error>
-                        <mat-error *ngIf="email.invalid">Email is Invalid</mat-error>
-                        <mat-icon matSuffix>email</mat-icon>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Password</mat-label>
-                        <input matInput placeholder="Password" type="password" required minlength="6" name="password"
-                            ngModel #password="ngModel">
-                        <mat-error *ngIf="password.errors && password.hasError('required')">
-                            Password is required
-                        </mat-error>
-                        <mat-error *ngIf="password.errors && password.errors?.['minlength']">
-                            Password must be of length 6
-                        </mat-error>
-                        <mat-icon matSuffix>lock</mat-icon>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Re-enter password</mat-label>
-                        <input matInput placeholder="Password" type="password" required minlength="6" name="repassword"
-                            ngModel #repassword="ngModel">
-                        <mat-error *ngIf="repassword.errors && repassword.hasError('required') ">
-                            Re-Enter Password is required
-                        </mat-error>
-                        <mat-error *ngIf="repassword.errors?.['minlength']">
-                            Password must be of length 6
-                        </mat-error>
-                        <mat-error *ngIf=" password.value != repassword.value ">
-                            password not matched
-                        </mat-error>
-                        <mat-icon matSuffix>lock</mat-icon>
-                    </mat-form-field>
-                    <mat-radio-group aria-label="Select an option" name="gender" ngModel #gender="ngModel"
-                        fxLayoutAlign="center center" color="primary">
-                        <mat-radio-button name="gender" value="male"><span class="male">Male</span></mat-radio-button>
-                        <mat-radio-button name="gender" value="female"><span
-                                class="female">Female</span></mat-radio-button>
-                    </mat-radio-group>
-                    <button mat-raised-button style="background-color: #be9c79;" class="login-button"
-                        (click)="selectedTabIndex=1">
-                        <span style="color: white;">Sign Up</span>
-                    </button>
-
-                </form>
-            </mat-tab>
-            <mat-tab label="Password settings">
-                <ng-template mat-tab-label>
-                    <mat-icon> locked</mat-icon>
-                    <span style="font-weight: bolder; font-size: large;"> Password Settings </span>
-                </ng-template>
-                <form class="form">
-                    <div class="pass">
-                        <mat-form-field>
-                            <mat-label>Old Password</mat-label>
-                            <input matInput placeholder="Old Password" type="password" required minlength="6"
-                                name="password" ngModel #password="ngModel">
-                            <mat-error *ngIf="password.errors && password.hasError('required')">
-                                Password is required
-                            </mat-error>
-                            <mat-error *ngIf="password.errors && password.errors?.['minlength']">
-                                Password must be of length 6
-                            </mat-error>
-                            <mat-icon matSuffix>lock</mat-icon>
-                        </mat-form-field>
-                    </div>
-                    <div class="pass">
-                        <mat-form-field>
-                            <mat-label>New Password</mat-label>
-                            <input matInput placeholder="New Password" type="password" required minlength="6"
-                                name="new password" ngModel #passwordn="ngModel">
-                            <mat-error *ngIf="passwordn.errors && passwordn.hasError('required')">
-                                Password is required
-                            </mat-error>
-                            <mat-error *ngIf="passwordn.errors && passwordn.errors?.['minlength']">
-                                Password must be of length 6
-                            </mat-error>
-                            <mat-icon matSuffix>lock</mat-icon>
-                        </mat-form-field>
-                    </div>
-                    <div class="repass">
-                        <mat-form-field>
-                            <mat-label>Re-enter password</mat-label>
-                            <input matInput placeholder="New Password" type="password" required minlength="6"
-                                name="repassword" ngModel #repassword="ngModel">
-                            <mat-error *ngIf="repassword.errors && repassword.hasError('required') ">
-                                Re-Enter Password is required
-                            </mat-error>
-                            <mat-error *ngIf="repassword.errors?.['minlength']">
-                                Password must be of length 6
-                            </mat-error>
-                            <mat-icon matSuffix>lock</mat-icon>
-                        </mat-form-field>
-                    </div>
-                    <button mat-raised-button style="background-color: #be9c79; color: white; font-size: 1.5rem;"
-                        class="login-button">
-                        Save
-                    </button>
-                </form>
+                <app-products></app-products>
             </mat-tab>
         </mat-tab-group>
     </mat-sidenav-content>

@@ -13,7 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductsComponent } from './products/products.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { UpdateItemComponent } from './update-item/update-item.component';
-
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { UpdateItemComponent } from './update-item/update-item.component';
     ProductsComponent,
     AddItemComponent,
     UpdateItemComponent,
+    LoginComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,7 @@ import { UpdateItemComponent } from './update-item/update-item.component';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   entryComponents: [AddItemComponent, UpdateItemComponent],
   providers: [],

@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { AddItemComponent } from '../add-item/add-item.component';
 import { UpdateItemComponent } from '../update-item/update-item.component';
 
@@ -49,8 +49,6 @@ export class ProductsComponent implements AfterViewInit {
     });
   }
   Add() {
-    const dialogconfig = new MatDialogConfig();
-
     this.dialog.open(AddItemComponent, {
       height: '65%',
       width: '45%',
