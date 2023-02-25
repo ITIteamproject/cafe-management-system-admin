@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddItemComponent } from '../add-item/add-item.component';
 import { UpdateItemComponent } from '../update-item/update-item.component';
 import { ProductsService } from './products.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-products',
@@ -36,6 +37,7 @@ export class ProductsComponent implements AfterViewInit, OnInit {
   ngAfterViewInit() {
     // this.dataSource.sort = this.sort;
   }
+
   applyFilter(event: Event) {
     this.filterValue = (event.target as HTMLInputElement).value;
 
@@ -46,17 +48,21 @@ export class ProductsComponent implements AfterViewInit, OnInit {
     }
   }
   update() {
-    this.dialog.open(UpdateItemComponent, {
+    const d = this.dialog.open(UpdateItemComponent, {
       data: {
         id: this.id,
       },
       height: '65%',
       width: '45%',
       panelClass: 'full-screen-modal',
+    });
+    d.afterClosed().subscribe((res) => {
+      this.getProducts();
+      // console.log("Hello");
     });
   }
   Add() {
-    this.dialog.open(AddItemComponent, {
+    const d = this.dialog.open(AddItemComponent, {
       data: {
         id: this.id,
       },
@@ -64,12 +70,32 @@ export class ProductsComponent implements AfterViewInit, OnInit {
       width: '45%',
       panelClass: 'full-screen-modal',
     });
+    d.afterClosed().subscribe((res) => {
+      this.getProducts();
+      // console.log("Hello");
+    });
   }
   delete(id: any) {
-    this.product.deleteProduct(id).subscribe({
-      next: () => {
-        location.reload();
-      },
+    Swal.fire({
+      title: 'Do you Want to Delete this Item?',
+      text: 'Are you Sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes,Delete Item.',
+      cancelButtonText: "No, Don't",
+    }).then((res) => {
+      if (res.value) {
+        Swal.fire('Deleted', 'Your Data is Deleted', 'success');
+        this.product.deleteProduct(id).subscribe({
+          next: () => {
+            this.getProducts();
+          },
+        });
+      } else if (res.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Failed to Delete item', 'error');
+        
+      }
     });
+    
   }
 }

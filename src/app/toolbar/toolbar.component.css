@@ -373,6 +373,8 @@ mat-toolbar {
 }
 
 /* ====================== Responsive Design ========================== */
+
+
 @media (max-width: 991px) {
 
 
@@ -418,13 +420,15 @@ mat-toolbar {
     }
 
 }
-.form{
+
+.form {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin-top: 30px;
 }
+
 .pass mat-form-field,
 .repass mat-form-field {
     width: 100%;

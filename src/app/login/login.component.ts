@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +11,7 @@ import { AuthService } from './auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(
-    private serve: AuthService,
-    private router: Router,
-    private http: HttpClient
-  ) {}
+  constructor(private serve: AuthService, private router: Router) {}
   ngOnInit(): void {}
 
   OnSubmit(f: NgForm) {
@@ -35,6 +32,7 @@ export class LoginComponent implements OnInit {
         },
       });
   }
+
   login(x: NgForm) {
     const y = x.value;
     this.serve.login(y.email, y.password).subscribe((res) => {
@@ -42,7 +40,15 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', res.accessToken);
       localStorage.setItem('logged', 'true');
       this.router.navigateByUrl('/admin');
+    }, error => {
+      
+      this.test();
     });
+  }
+  test() {
+    if (!this.serve.checkAuth()) {
+      Swal.fire('Login Failed', 'Your Email or password is incorrect', 'error');
+    }
   }
   logOut() {
     // this.serve.logOut().subscribe();

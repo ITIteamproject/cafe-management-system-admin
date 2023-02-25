@@ -16,6 +16,8 @@ import { UpdateItemComponent } from './update-item/update-item.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorComponent } from './error/error.component';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { ErrorComponent } from './error/error.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SimpleNotificationsModule.forRoot(),
   ],
   entryComponents: [AddItemComponent, UpdateItemComponent],
   providers: [],

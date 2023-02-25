@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../products/products.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import * as toastify from 'toastify-js';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-item',
@@ -16,17 +16,15 @@ export class UpdateItemComponent implements OnInit {
   selected: any = null;
   constructor(
     @Inject(MAT_DIALOG_DATA) private idNew: any,
-    private prod: ProductsService
+    private prod: ProductsService,
+    public dialogRef: MatDialogRef<UpdateItemComponent>
   ) {}
   ngOnInit(): void {
     this.id = this.idNew.id;
-    // console.log(this.id);
+
     this.prod.getProductx(this.id).subscribe((res) => {
-      // console.log(res);
       this.product = res;
-      // console.log(this.product.data);
     });
-    // console.log(this.product);
   }
   onSelect(e: any) {
     if (e.target.files && e.target.files[0]) {
@@ -46,18 +44,23 @@ export class UpdateItemComponent implements OnInit {
     } else {
       product = { name, price, description };
     }
-    
-    this.prod.updateProducts(this.id, product).subscribe((res) => {
-      this.prod.getProducts().subscribe(res => {
-        this.product = res;
-      });
+    Swal.fire({
+      title: 'Do you Want to update this data?',
+      text: 'Is this data is Correct?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes,Update Data.',
+      cancelButtonText: "No, Don't",
+    }).then((res) => {
+      if (res.value) {
+        Swal.fire('Update', 'Your Data is updated', 'success');
+        this.prod.updateProducts(this.id, product).subscribe((x) => {});
+        this.dialogRef.close();
+        // location.reload();
+      } else if (res.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Failed to Update item', 'error');
+        this.dialogRef.close();
+      }
     });
-    toastify({
-      text: 'Login Failed pleace check password or user name',
-      duration: 1000,
-      style: {
-        background: 'orange',
-      },
-    }).showToast();
   }
 }

@@ -21,8 +21,8 @@
             <img style="width: 100px;" src="{{product?.data.photo}}" alt="">
             <input style="margin-left: 30px;" type="file" (change)="onSelect($event)" >
             <div mat-dialog-actions fxLayoutAlign="center center">
-                <button mat-raised-button cdkFocusInitial mat-dialog-close type="submit" color="primary"
-                (click)="update(name.value , price.value , desc.value)">Update</button>
+                <button mat-raised-button cdkFocusInitial  type="submit" color="primary"
+                (click)="update(name.value , price.value , desc.value)" >Update</button>
                 <button mat-raised-button cdkFocusInitial mat-dialog-close type="submit" color="accent">Cancel</button>
             </div>
         </form>

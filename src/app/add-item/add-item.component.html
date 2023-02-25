@@ -5,23 +5,23 @@
         <form #f="ngForm">
             <mat-form-field appearance="fill">
                 <mat-label>Title</mat-label>
-                <input matInput #name >
+                <input matInput #name>
             </mat-form-field>
             <mat-form-field appearance="fill" floatLabel="always">
                 <mat-label>Price</mat-label>
-                <input matInput type="text" #price placeholder="0" >
+                <input matInput type="text" #price placeholder="0">
                 <span matTextPrefix>$&nbsp;</span>
                 <span matTextSuffix>.00</span>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label> Description </mat-label>
-                <textarea matInput #desc ></textarea>
+                <textarea matInput #desc></textarea>
             </mat-form-field>
 
             <!-- <img style="width: 100px;" src="{{product?.data.photo}}" alt=""> -->
             <input style="margin-left: 30px;" type="file" (change)="onSelect($event)">
             <div mat-dialog-actions fxLayoutAlign="center center">
-                <button mat-raised-button cdkFocusInitial mat-dialog-close type="submit" color="primary"
+                <button mat-raised-button cdkFocusInitial type="submit" color="primary"
                     (click)="create(name.value , price.value , desc.value)">CreateItem</button>
                 <button mat-raised-button cdkFocusInitial mat-dialog-close type="submit" color="accent">Cancel</button>
             </div>

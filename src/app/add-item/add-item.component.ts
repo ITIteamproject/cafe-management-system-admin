@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ProductsService } from '../products/products.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-item',
@@ -14,6 +15,7 @@ export class AddItemComponent implements OnInit {
   selected: any = null;
   constructor(
     private prod: ProductsService,
+    public dialogRef: MatDialogRef<AddItemComponent>,
     @Inject(MAT_DIALOG_DATA) private idNew: any
   ) {}
   ngOnInit(): void {
@@ -37,8 +39,10 @@ export class AddItemComponent implements OnInit {
     } else {
       product = { name, price, description };
     }
-    this.prod.AddProduct(product).subscribe((res) => {
-      location.reload();
+    Swal.fire('Thank You....', 'Item add Successfully', 'success');
+    this.prod.AddProduct(product).subscribe((x) => {
+      // location.reload();
     });
+    this.dialogRef.close();
   }
 }

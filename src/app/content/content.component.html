@@ -3,75 +3,41 @@
     <div class="recentOrders">
         <div class="cardHeader">
             <h2>Recent Orders</h2>
-            <a href="#" class="btn">View All</a>
-        </div>
 
+        </div>
+        
         <table>
             <thead>
                 <tr>
-                    <td>Name</td>
-                    <td>Price</td>
-                    <td>Payment</td>
+                    <td>User Name</td>
+                    <td>Order</td>
+                    <td>Total price</td>
+                    <td>Amount</td>
                     <td>Status</td>
+                    <td>update Status</td>
                 </tr>
             </thead>
-
             <tbody>
-                <tr>
-                    <td>Star Refrigerator</td>
-                    <td>$1200</td>
-                    <td>Paid</td>
-                    <td><span class="status delivered">Delivered</span></td>
+                <tr *ngFor="let item of orderInfo">
+                    
+                    <td>{{item.userId?.username}}</td>
+                    <td>{{item.productId?.name}}</td>
+                    <td>{{item.totalPrice}}</td>
+                    <td>{{item.amount}}</td>
+                    <td>{{item.status}}</td>
+                    <td class="list">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Select</mat-label>
+                            <mat-select  (selectionChange)="Status( $event.value , item._id)">
+                                <mat-option value="Pendding">Pendding</mat-option>
+                                <mat-option value="delivered">Delivered</mat-option>
+                                <mat-option value="rejected">Rejected</mat-option>
+                            </mat-select>
+                        </mat-form-field></td>
                 </tr>
 
-                <tr>
-                    <td>Dell Laptop</td>
-                    <td>$110</td>
-                    <td>Due</td>
-                    <td><span class="status pending">Pending</span></td>
-                </tr>
+                <mat-spinner style=" position: absolute; top: 0; left: 0; transform: translate(30vw,30vh);" *ngIf ="orderInfo.length == 0"></mat-spinner>
 
-                <tr>
-                    <td>Apple Watch</td>
-                    <td>$1200</td>
-                    <td>Paid</td>
-                    <td><span class="status return">Return</span></td>
-                </tr>
-
-                <tr>
-                    <td>Addidas Shoes</td>
-                    <td>$620</td>
-                    <td>Due</td>
-                    <td><span class="status inProgress">In Progress</span></td>
-                </tr>
-
-                <tr>
-                    <td>Star Refrigerator</td>
-                    <td>$1200</td>
-                    <td>Paid</td>
-                    <td><span class="status delivered">Delivered</span></td>
-                </tr>
-
-                <tr>
-                    <td>Dell Laptop</td>
-                    <td>$110</td>
-                    <td>Due</td>
-                    <td><span class="status pending">Pending</span></td>
-                </tr>
-
-                <tr>
-                    <td>Apple Watch</td>
-                    <td>$1200</td>
-                    <td>Paid</td>
-                    <td><span class="status return">Return</span></td>
-                </tr>
-
-                <tr>
-                    <td>Addidas Shoes</td>
-                    <td>$620</td>
-                    <td>Due</td>
-                    <td><span class="status inProgress">In Progress</span></td>
-                </tr>
             </tbody>
         </table>
     </div>
@@ -83,75 +49,12 @@
         </div>
 
         <table>
-            <tr>
+            <tr *ngFor="let item of users">
                 <td width="60px">
-                    <div class="imgBx"><img src="assets\emo.png" alt=""></div>
+                    <div class="imgBx"><img src="{{item.userImage}}" alt=""></div>
                 </td>
                 <td>
-                    <h4>David <br> <span>Italy</span></h4>
-                </td>
-            </tr>
-
-            <tr>
-                <td width="60px">
-                    <div class="imgBx"><img src="assets\emo.png" alt=""></div>
-                </td>
-                <td>
-                    <h4>Amit <br> <span>India</span></h4>
-                </td>
-            </tr>
-
-            <tr>
-                <td width="60px">
-                    <div class="imgBx"><img src="assets\emo.png" alt=""></div>
-                </td>
-                <td>
-                    <h4>David <br> <span>Italy</span></h4>
-                </td>
-            </tr>
-
-            <tr>
-                <td width="60px">
-                    <div class="imgBx"><img src="assets\emo.png" alt=""></div>
-                </td>
-                <td>
-                    <h4>Amit <br> <span>India</span></h4>
-                </td>
-            </tr>
-
-            <tr>
-                <td width="60px">
-                    <div class="imgBx"><img src="assets\emo.png" alt=""></div>
-                </td>
-                <td>
-                    <h4>David <br> <span>Italy</span></h4>
-                </td>
-            </tr>
-
-            <tr>
-                <td width="60px">
-                    <div class="imgBx"><img src="assets\emo.png" alt=""></div>
-                </td>
-                <td>
-                    <h4>Amit <br> <span>India</span></h4>
-                </td>
-            </tr>
-
-            <tr>
-                <td width="60px">
-                    <div class="imgBx"><img src="assets\emo.png" alt=""></div>
-                </td>
-                <td>
-                    <h4>David <br> <span>Italy</span></h4>
-                </td>
-            </tr>
-
-            <tr>
-                <td width="60px">
-                    <div class="imgBx"><img src="assets\emo.png" alt=""></div>
-                </td>
-                <td>
-                    <h4>Amit <br> <span>India</span></h4>
+                    <h4>{{item.username}} <br> <span>{{item.email}}</span></h4>
                 </td>
             </tr>
         </table>

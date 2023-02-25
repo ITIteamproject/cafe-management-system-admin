@@ -12,13 +12,17 @@ export class ProductsService {
   getProducts() {
     return this.http.get<any>('http://localhost:3000/api/products').pipe(
       map((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
       })
     );
   }
   getOrders() {
-    return this.http.get<any>('http://localhost:3000/orders/all');
+    return this.http.get<any>('http://localhost:3000/orders/all').pipe(
+      map((res) => {
+        return res;
+      })
+    );
   }
 
   updateProducts(id: any, product: any) {
@@ -41,7 +45,7 @@ export class ProductsService {
     formData.append('name', product.name);
     formData.append('price', product.price);
     formData.append('description', product.description);
-    
+
     formData.append('photo', product.photo, product.photo?.name);
     console.log(formData);
 
@@ -53,5 +57,12 @@ export class ProductsService {
   }
   getProductx(id: any) {
     return this.http.get('http://localhost:3000/api/products/' + id);
+  }
+  updateStatus(id: any, status: any) {
+    console.log(status, id);
+    return this.http.patch('http://localhost:3000/orders/' + id, status);
+  }
+  getUsers() {
+    return this.http.get('http://localhost:3000/profile/all');
   }
 }

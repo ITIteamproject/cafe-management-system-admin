@@ -14,9 +14,9 @@
     display: grid;
     background: white;
     padding: 20px;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 2% 98%;
 }
 
 .details .cardHeader {
@@ -80,50 +80,16 @@
     text-align: center;
 }
 
-.status.delivered {
-    padding: 2px 4px;
-    background: #8de02c;
-    color: white;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.status.pending {
-    padding: 2px 4px;
-    background: #e9b10a;
-    color: white;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.status.return {
-    padding: 2px 4px;
-    background: #f00;
-    color: white;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.status.inProgress {
-    padding: 2px 4px;
-    background: #1795ce;
-    color: white;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-}
-
 .recentCustomers {
     position: relative;
     display: grid;
     min-height: 500px;
     padding: 20px;
     background: white;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
+    /* grid-template-rows: 2% 98%; */
+    grid-auto-rows: 5vh;
 }
 
 .recentCustomers .imgBx {

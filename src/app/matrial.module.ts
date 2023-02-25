@@ -17,6 +17,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
     MatDialogModule,
     MatSelectModule,
     NgxMatFileInputModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     MatInputModule,
@@ -63,6 +65,7 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
     MatPaginatorModule,
     MatSelectModule,
     NgxMatFileInputModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class MatrialModule {}
