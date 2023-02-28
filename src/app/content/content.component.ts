@@ -8,7 +8,7 @@ import { ProductsService } from '../products/products.service';
   styleUrls: ['./content.component.css'],
 })
 export class ContentComponent implements OnInit {
-  modeSelect:any;
+  modeSelect: any;
   orderInfo = [];
   users: any;
   orders: any;
@@ -19,8 +19,8 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {
     this.orders = this.serve.getOrders().subscribe((res) => {
       this.orderInfo = res;
-     
-     console.log(res);
+
+      console.log(res);
     });
     this.serve.getUsers().subscribe((res) => {
       this.users = res;
@@ -29,6 +29,16 @@ export class ContentComponent implements OnInit {
   }
   Status(status, id) {
     console.log(status, id);
-    this.serve.updateStatus(id, status).subscribe();
+
+    this.serve.updateStatus(id, { status }).subscribe({
+      next: (res) => {
+        this.orders = this.serve.getOrders().subscribe((res) => {
+          this.orderInfo = res;
+
+          // console.log(res);
+        });
+        console.log(res);
+      },
+    });
   }
 }
