@@ -16,7 +16,7 @@
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
-    grid-template-rows: 2% 98%;
+    grid-template-rows: 2% 92%;
 }
 
 .details .cardHeader {
@@ -88,7 +88,7 @@
     background: white;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
-    /* grid-template-rows: 2% 98%; */
+    /* grid-template-rows: 7% 92%; */
     grid-auto-rows: 5vh;
 }
 

@@ -32,8 +32,14 @@ export class ContentComponent implements OnInit {
       status,
     };
     console.log(status, id);
-    this.serve.updateStatus(id, changedStatus).subscribe({
+
+    this.serve.updateStatus(id, { status }).subscribe({
       next: (res) => {
+        this.orders = this.serve.getOrders().subscribe((res) => {
+          this.orderInfo = res;
+
+          // console.log(res);
+        });
         console.log(res);
       },
     });

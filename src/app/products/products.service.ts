@@ -13,7 +13,7 @@ export class ProductsService {
     return this.http.get<any>('http://localhost:3000/api/products').pipe(
       map((res) => {
         // console.log(res.data);
-        return res.data;
+        return res;
       })
     );
   }
@@ -60,7 +60,8 @@ export class ProductsService {
   }
   updateStatus(id: any, status: any) {
     console.log(status, id);
-    return this.http.patch('http://localhost:3000/orders/'+id, status);
+
+    return this.http.patch('http://localhost:3000/orders/' + id, status);
   }
   getUsers() {
     return this.http.get('http://localhost:3000/profile/all');

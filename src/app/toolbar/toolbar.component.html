@@ -95,25 +95,25 @@
             </div>
 
             <div class="user">
-                <img src="assets\emo.png" alt="">
+                <img src="assets\home-img-1.png" alt="">
             </div>
         </mat-toolbar>
         <!-- ======================= Cards ================== -->
         <div class="cardBox">
             <div class="card">
                 <div>
-                    <div class="numbers">1,504</div>
+                    <div class="numbers">{{products?.views}}</div>
                     <div class="cardName">Daily Views</div>
                 </div>
 
                 <div class="iconBx">
-                    <i class="fa fa-eyedropper" aria-hidden="true"></i>
+                    <i class="fa-solid fa-eye"></i>
                 </div>
             </div>
 
             <div class="card">
                 <div>
-                    <div class="numbers">80</div>
+                    <div class="numbers">{{products?.count}}</div>
                     <div class="cardName">Sales</div>
                 </div>
 
@@ -124,23 +124,23 @@
 
             <div class="card">
                 <div>
-                    <div class="numbers">284</div>
-                    <div class="cardName">Comments</div>
+                    <div class="numbers">{{users?.length }}</div>
+                    <div class="cardName">Users</div>
                 </div>
 
                 <div class="iconBx">
-                    <i class="fas fa-chart-pie    "></i>
+                    <i class="fa-sharp fa-solid fa-users"></i>
                 </div>
             </div>
 
             <div class="card">
                 <div>
-                    <div class="numbers">$7,842</div>
+                    <div class="numbers">${{totalSales}}</div>
                     <div class="cardName">Earning</div>
                 </div>
 
                 <div class="iconBx">
-                    <i class="fas fa-caret-square-right"></i>
+                <i class="fa-solid fa-money-bill-trend-up"></i>
                 </div>
             </div>
         </div>

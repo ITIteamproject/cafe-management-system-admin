@@ -35,12 +35,15 @@ export class AddItemComponent implements OnInit {
     let product;
     if (this.selected) {
       product = { name, price, description, photo: this.selected };
+      Swal.fire('Thank You....', 'Item add Successfully', 'success');
+
       this.selected = null;
     } else {
       product = { name, price, description };
+      Swal.fire('Data is not completed', 'Please compelete data', 'error');
     }
-    Swal.fire('Thank You....', 'Item add Successfully', 'success');
     this.prod.AddProduct(product).subscribe((x) => {
+      Swal.fire('Thank You....', 'Item add Successfully', 'success');
       // location.reload();
     });
     this.dialogRef.close();

@@ -26,7 +26,7 @@ export class ProductsComponent implements AfterViewInit, OnInit {
   }
   getProducts() {
     this.product.getProducts().subscribe((res) => {
-      this.products = res;
+      this.products = res.data;
       this.dataSource = new MatTableDataSource<any>(this.products);
       this.dataSource.paginator = this.paginator;
     });
