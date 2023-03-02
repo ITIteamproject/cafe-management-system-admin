@@ -12,6 +12,7 @@ export class ContentComponent implements OnInit {
   orderInfo = [];
   users: any;
   orders: any;
+  select: any;
   constructor(
     private serve: ProductsService,
     private notify: NotificationsService
@@ -19,7 +20,7 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {
     this.orders = this.serve.getOrders().subscribe((res) => {
       this.orderInfo = res;
-
+      this.select = res.status;
       console.log(res);
     });
     this.serve.getUsers().subscribe((res) => {
