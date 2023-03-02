@@ -60,7 +60,6 @@ export class ProductsService {
   }
   updateStatus(id: any, status: any) {
     console.log(status, id);
-
     return this.http.patch('http://localhost:3000/orders/' + id, status);
   }
   getUsers() {

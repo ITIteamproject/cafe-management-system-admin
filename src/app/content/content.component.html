@@ -9,7 +9,7 @@
         <table>
             <thead>
                 <tr>
-                    <td>User Name</td>
+
                     <td>Order</td>
                     <td>Total price</td>
                     <td>Amount</td>
@@ -20,7 +20,6 @@
             <tbody>
                 <tr *ngFor="let item of orderInfo">
 
-                    <td>{{item.userId?.username}}</td>
                     <td>{{item.productId?.name}}</td>
                     <td>{{item.totalPrice}}</td>
                     <td>{{item.amount}}</td>
@@ -28,7 +27,7 @@
                     <td class="list">
                         <mat-form-field appearance="fill">
                             <mat-label>Select</mat-label>
-                            <mat-select (selectionChange)="Status( $event.value , item._id)">
+                            <mat-select matNativeControl  (selectionChange)="Status( $event.value , item._id)" placeholder="Status">
                                 <mat-option value="pending">Pendding</mat-option>
                                 <mat-option value="accepted">Accepted</mat-option>
                                 <mat-option value="rejected">Rejected</mat-option>
