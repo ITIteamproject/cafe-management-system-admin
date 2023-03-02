@@ -10,7 +10,7 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   getProducts() {
-    return this.http.get<any>('http://localhost:3000/api/products').pipe(
+    return this.http.get<any>('https://api-cafebuyers.onrender.com/api/products').pipe(
       map((res) => {
         // console.log(res.data);
         return res;
@@ -18,7 +18,7 @@ export class ProductsService {
     );
   }
   getOrders() {
-    return this.http.get<any>('http://localhost:3000/orders/all').pipe(
+    return this.http.get<any>('https://api-cafebuyers.onrender.com/orders/all').pipe(
       map((res) => {
         return res;
       })
@@ -35,7 +35,7 @@ export class ProductsService {
     }
 
     return this.http.patch(
-      'http://localhost:3000/api/products/' + id,
+      'https://api-cafebuyers.onrender.com/api/products/' + id,
       formData
     );
   }
@@ -49,20 +49,20 @@ export class ProductsService {
     formData.append('photo', product.photo, product.photo?.name);
     console.log(formData);
 
-    return this.http.post('http://localhost:3000/api/products/', formData);
+    return this.http.post('https://api-cafebuyers.onrender.com/api/products/', formData);
   }
 
   deleteProduct(id: any) {
-    return this.http.delete('http://localhost:3000/api/products/' + id);
+    return this.http.delete('https://api-cafebuyers.onrender.com/api/products/' + id);
   }
   getProductx(id: any) {
-    return this.http.get('http://localhost:3000/api/products/' + id);
+    return this.http.get('https://api-cafebuyers.onrender.com/api/products/' + id);
   }
   updateStatus(id: any, status: any) {
     console.log(status, id);
-    return this.http.patch('http://localhost:3000/orders/' + id, status);
+    return this.http.patch('https://api-cafebuyers.onrender.com/orders/' + id, status);
   }
   getUsers() {
-    return this.http.get('http://localhost:3000/profile/all');
+    return this.http.get('https://api-cafebuyers.onrender.com/profile/all');
   }
 }

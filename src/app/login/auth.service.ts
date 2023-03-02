@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
   login(email: string, password: string) {
     // this.authChange.next(true);
-    return this.http.post<any>('http://localhost:3000/reg/login', {
+    return this.http.post<any>('https://api-cafebuyers.onrender.com/reg/login', {
       email,
       password,
     });
@@ -25,7 +25,7 @@ export class AuthService {
     gender: string
   ) {
     // this.authChange.next(true);
-    return this.http.post('http://localhost:3000/reg/signup', {
+    return this.http.post('https://api-cafebuyers.onrender.com/reg/signup', {
       username,
       email,
       password,
