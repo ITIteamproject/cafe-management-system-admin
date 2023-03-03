@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationsService } from 'angular2-notifications';
+// import { NotificationsService } from 'angular2-notifications';
 import { ProductsService } from '../products/products.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class ContentComponent implements OnInit {
   select: any;
   constructor(
     private serve: ProductsService,
-    private notify: NotificationsService
+    // private notify: NotificationsService
   ) {}
   ngOnInit(): void {
     this.orders = this.serve.getOrders().subscribe((res) => {

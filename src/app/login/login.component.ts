@@ -14,25 +14,6 @@ export class LoginComponent implements OnInit {
   constructor(private serve: AuthService, private router: Router) {}
   ngOnInit(): void {}
 
-  OnSubmit(f: NgForm) {
-    const reg = f.value;
-    console.log(reg);
-    this.serve
-      .register(
-        reg.username,
-        reg.email,
-        reg.password,
-        reg.repassword,
-        reg.gender
-      )
-      .subscribe({
-        next: (res) => {
-          console.log('ok');
-          this.router.navigateByUrl('/admin');
-        },
-      });
-  }
-
   login(x: NgForm) {
     const y = x.value;
     this.serve.login(y.email, y.password).subscribe((res) => {

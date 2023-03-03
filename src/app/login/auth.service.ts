@@ -17,22 +17,7 @@ export class AuthService {
       password,
     });
   }
-  register(
-    username: string,
-    email: string,
-    password: string,
-    repassword: string,
-    gender: string
-  ) {
-    // this.authChange.next(true);
-    return this.http.post('http://localhost:3000/reg/signup', {
-      username,
-      email,
-      password,
-      repassword,
-      gender,
-    });
-  }
+
   checkAuth() {
     if (localStorage.getItem('logged') == 'true') return true;
     else return false;
